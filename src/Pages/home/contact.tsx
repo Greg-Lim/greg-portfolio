@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-
 export function Contact() {
   return (
     <div className="flex flex-col gap-8 max-w-[900px] mx-auto justify-items-start">

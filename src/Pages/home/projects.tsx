@@ -1,5 +1,3 @@
-import pig from "@/assets/pig_2.png";
-
 type Project = {
   title: string;
   subtitle?: string;
