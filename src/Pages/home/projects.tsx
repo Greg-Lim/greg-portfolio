@@ -1,14 +1,9 @@
-type Project = {
-  title: string;
-  subtitle?: string;
-  period: string;
-  description: string;
-  skills: string[];
-  images?: string[];
-};
+import { Experience } from "./experience";
+import type { ExperienceProps } from "./experience";
+import dummy_projects from "@/Pages/home/experience/dummy_project.png";
 
 export function Projects() {
-  const projects: Project[] = [
+  const projects: ExperienceProps[] = [
     {
       title: "Senior Full Stack Developer",
       subtitle: "Tech Company",
@@ -32,6 +27,8 @@ export function Projects() {
       description:
         "Built frontend features using React and contributed to backend development. Participated in code reviews and improved development processes.",
       skills: ["JavaScript", "React", "Node.js", "Git"],
+      link: "test link.com",
+      images: [dummy_projects],
     },
   ];
 
@@ -41,32 +38,7 @@ export function Projects() {
         <h1 className="text-4xl font-bold mb-8">Work Experience</h1>
         <div className="space-y-6">
           {projects.map((exp, idx) => (
-            <div key={idx} className="border-l-4 border-blue-500 pl-6 pb-6">
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <h2 className="text-2xl font-bold">{exp.title}</h2>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                    {exp.subtitle}
-                  </p>
-                </div>
-                <span className="text-gray-500 dark:text-gray-400 text-sm whitespace-nowrap ml-4">
-                  {exp.period}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-300 mb-3">
-                {exp.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {exp.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <Experience key={idx} {...exp} />
           ))}
         </div>
       </section>

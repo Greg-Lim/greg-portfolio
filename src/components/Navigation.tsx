@@ -23,7 +23,7 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
             href="#Intro"
             className="text-lg font-semibold hover:text-gray-300 transition px-4"
           >
-            Intro
+            Home
           </a>
 
           <a
@@ -66,7 +66,7 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
             onClick={() => setIsOpen(false)}
             className="text-lg font-semibold hover:text-gray-300 transition"
           >
-            Intro
+            Home
           </a>
           <a
             href="#About"
