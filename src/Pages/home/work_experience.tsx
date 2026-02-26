@@ -1,35 +1,49 @@
 import dummy_projects from "@/Pages/home/experience/dummy_project.png";
 import { Experience } from "./experience";
 import type { ExperienceProps } from "./experience";
+import { myResume } from "@/resume/myresume";
 
 export function WorkExperience() {
-  const experiences: ExperienceProps[] = [
-    {
-      title: "Senior Full Stack Developer",
-      subtitle: "Tech Company",
-      period: "2023 - Present",
-      description:
-        "Led development of scalable web applications using React, Node.js, and TypeScript. Mentored junior developers and improved application performance.",
-      skills: ["React", "Node.js", "TypeScript", "PostgreSQL"],
-      images: [dummy_projects],
-    },
-    {
-      title: "Full Stack Developer",
-      subtitle: "Digital Agency",
-      period: "2021 - 2023",
-      description:
-        "Developed and maintained multiple client websites and applications. Implemented responsive designs and optimized database queries for better performance.",
-      skills: ["React", "JavaScript", "Express", "MongoDB"],
-    },
-    {
-      title: "Junior Developer",
-      subtitle: "Startup",
-      period: "2020 - 2021",
-      description:
-        "Built frontend features using React and contributed to backend development. Participated in code reviews and improved development processes.",
-      skills: ["JavaScript", "React", "Node.js", "Git"],
-    },
-  ];
+  //filter empty titles
+  const experiences: ExperienceProps[] =
+    myResume.work
+      ?.filter((work) => work.importance?.toInclude != "Always Exclude")
+      .filter((work): work is typeof work & { name: string } =>
+        Boolean(work.name && work.name.trim() !== ""),
+      )
+      .map((work) => {
+        return {
+          title: work.name,
+          subtitle: work.position,
+          startDate: work.startDate,
+          endDate: work.endDate,
+          description: work.summary,
+          skills: work.tags,
+          link: work.url,
+          media: work.media,
+        };
+      })
+      .sort((a, b) => {
+        // Present fist
+        // If both have, sort by start date
+        // if both dont have, sort by end date then start date
+        if (a.endDate === "Present") {
+          a = { ...a, endDate: new Date().toISOString() };
+        }
+        if (b.endDate === "Present") {
+          b = { ...b, endDate: new Date().toISOString() };
+        }
+        if (a.endDate != b.endDate) {
+          return (
+            new Date(b.endDate || "").getTime() -
+            new Date(a.endDate || "").getTime()
+          );
+        }
+        return (
+          new Date(b.startDate || "").getTime() -
+          new Date(a.startDate || "").getTime()
+        );
+      }) || [];
 
   return (
     <div className="flex flex-col gap-8 mx-auto">

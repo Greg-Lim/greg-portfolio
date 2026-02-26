@@ -32,7 +32,7 @@ export function Home() {
   }, [hasShown]);
 
   return (
-    <div className="flex flex-col w-auto items-start self-center gap-32 mx-6 lg:mx-16 pt-2 mb-16 max-w-4xl">
+    <div className="flex flex-col w-auto items-start self-center gap-32 mx-6 lg:mx-16 pt-2 mb-16 max-w-6xl box-border">
       <div id="Intro" className="scroll-mt-32">
         <Intro />
       </div>
