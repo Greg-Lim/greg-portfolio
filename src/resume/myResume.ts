@@ -2,6 +2,9 @@ import * as resumeType from "@/types/resume";
 import dummy_projects from "@/Pages/home/experience/dummy_project.png";
 import MCTSGif from "@/assets/MCTS.gif";
 
+import nixie_dark from "@/resume/media/nixie_dark.gif";
+import nixie_bright from "@/resume/media/nixie_bright.gif";
+
 export const myResume: resumeType.Resume = {
   basics: {
     name: "Greg LIM",
@@ -49,18 +52,11 @@ export const myResume: resumeType.Resume = {
             "Collaborated cross-functionally with Product Managers, Frontend Engineers, QA, and platform teams",
         },
       ],
-      url: "https://www.tiktok.com/",
       tags: ["Go", "MongoDB", "Kitex", "Hertz", "Backend"],
       importance: {
         priority: 9,
         toInclude: "Always Include",
       },
-      media: [
-        {
-          type: "file",
-          path: dummy_projects,
-        },
-      ],
     },
     {
       name: "Autodesk",
@@ -308,6 +304,16 @@ export const myResume: resumeType.Resume = {
         },
       ],
       tags: ["Arduino", "Embedded Programming", "Hardware"],
+      media: [
+        {
+          type: "file",
+          path: nixie_bright,
+        },
+        {
+          type: "file",
+          path: nixie_dark,
+        },
+      ],
     },
   ],
   volunteer: [
