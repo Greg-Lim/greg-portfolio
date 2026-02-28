@@ -52,7 +52,7 @@ export const myResume: resumeType.Resume = {
             "Collaborated cross-functionally with Product Managers, Frontend Engineers, QA, and platform teams",
         },
       ],
-      tags: ["Go", "MongoDB", "Kitex", "Hertz", "Backend"],
+      tags: ["Go", "MongoDB", "Kitex", "Hertz", "Microservices"],
       importance: {
         priority: 9,
         toInclude: "Always Include",
@@ -68,18 +68,18 @@ export const myResume: resumeType.Resume = {
       highlights: [
         {
           highlight:
-            "Developed advanced search component for Schema Portal using React Query and Jest",
+            "Developed an advanced search component for the Schema Portal using ReactQuery.",
         },
         {
           highlight:
-            "Refactored production code to genericise paginated fetching logic",
+            "Refactored production code to abstract and standardise paginated fetching.",
         },
         {
           highlight:
-            "Worked with Git (Merge, Rebase, Cherry-pick) in large team environments",
+            "Utilized Jenkins for CI/CD pipelines and Jest for unit/integration testing",
         },
       ],
-      tags: ["React", "React Query", "Jest", "Jenkins", "Frontend"],
+      tags: ["React", "ReactQuery", "Jest", "Jenkins", "Frontend"],
       importance: {
         priority: 8,
         toInclude: "Always Include",
@@ -171,6 +171,7 @@ export const myResume: resumeType.Resume = {
         priority: 2,
         toInclude: "Optional",
       },
+      tags: ["Aerospace", "Diploma"],
     },
   ],
   skills: [

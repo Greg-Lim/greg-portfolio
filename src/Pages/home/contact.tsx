@@ -16,7 +16,7 @@ export function Contact() {
               <h3 className="text-xl font-semibold mb-2">Email</h3>
               <a
                 href="mailto:limgreg33cc@gmail.com"
-                className="text-primary hover:underline font-semibold"
+                className="text-primary  hover:underline font-semibold"
               >
                 limgreg33cc@gmail.com
               </a>

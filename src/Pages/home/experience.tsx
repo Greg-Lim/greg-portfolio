@@ -1,12 +1,6 @@
 import type { Media, MediaFile, MediaLink, MediaPreview } from "@/types/resume";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { GithubIcon } from "@/components/icons/github";
 import ExternalLinkIcon from "@/components/icons/external-link";
 import { formatDate } from "@/resume/resumeHelpter";
@@ -109,19 +103,15 @@ export function ExperienceImage({ media }: { media: Media }) {
 
 export function ExperienceCarousel({ medias }: { medias: Media[] }) {
   return (
-    <Carousel className="w-full ">
-      <CarouselContent className="">
-        {medias.map((media, idx) => (
-          <CarouselItem key={idx} className="w-full">
-            {media.type === "link" && mediaLink(media)}
-            {media.type === "file" && mediaFile(media)}
-            {media.type === "preview" && mediaPreview(media)}
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="absolute left-4" />
-      <CarouselNext className="absolute right-4" />
-    </Carousel>
+    <Splide className="w-full ">
+      {medias.map((media, idx) => (
+        <SplideSlide key={idx} className="w-full">
+          {media.type === "link" && mediaLink(media)}
+          {media.type === "file" && mediaFile(media)}
+          {media.type === "preview" && mediaPreview(media)}
+        </SplideSlide>
+      ))}
+    </Splide>
   );
 }
 

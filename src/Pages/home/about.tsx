@@ -1,4 +1,4 @@
-import { myResume } from "@/resume/myresume";
+import { myResume } from "@/resume/myResume";
 import { formatDate } from "@/resume/resumeHelpter";
 
 export function About() {

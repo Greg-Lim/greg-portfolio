@@ -23,7 +23,7 @@ const BaseLayout = () => {
       <Navigation isOpen={isOpen} setIsOpen={setIsOpen} navRef={navRef} />
 
       {/* Main Content */}
-      <main className="flex-1 max-w-6xl mx-auto w-full">
+      <main className="flex-1 max-w-6xl mx-auto w-full ">
         <Outlet />
       </main>
 

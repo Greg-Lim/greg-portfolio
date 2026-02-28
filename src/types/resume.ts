@@ -70,6 +70,7 @@ export interface Education {
   score?: string;
   courses?: string[];
   importance?: Importance;
+  tags?: Tag[];
 }
 
 export interface Skill {

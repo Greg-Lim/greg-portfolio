@@ -1,7 +1,7 @@
 import dummy_projects from "@/Pages/home/experience/dummy_project.png";
 import { Experience } from "./experience";
 import type { ExperienceProps } from "./experience";
-import { myResume } from "@/resume/myresume";
+import { myResume } from "@/resume/myResume";
 
 export function WorkExperience() {
   //filter empty titles

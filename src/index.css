@@ -48,13 +48,13 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(35.816% 0.05243 82.984);
   --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
+  --card: oklch(61.434% 0.00601 16.682);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
+  --primary: oklch(0.623 0.214 259.815);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -119,18 +119,18 @@
   /* --radius: 0.75rem; Slightly softer corners look more modern */
   
   /* Background: A very clean, high-end "Paper" white */
-  --background: oklch(99.655% 0.00181 249.268);
+  --background: oklch(0.9862 0.0142 84.58);
   --foreground: oklch(0.15 0.02 260);
   
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 260);
   
   /* Primary: A rich, "Link" Indigo. It pops but stays serious. */
-  --primary: oklch(77.944% 0.00009 271.152); 
+  --primary: oklch(50.404% 0.15833 273.033); 
   --primary-foreground: oklch(0.99 0.002 260);
 
   /* Secondary: A cool, airy mist that complements the indigo */
-  --secondary: oklch(98.771% 0.00583 264.667);
+  --secondary: oklch(97.486% 0.02786 86.633);
   --secondary-foreground: oklch(85.082% 0.05701 282.902);
 
   --muted: oklch(0.96 0.01 260);
@@ -153,7 +153,7 @@
 
 .dark {
   /* Deep Blue-Black instead of muddy grey */
-  --background: rgb(45, 50, 60);
+  --background: rgb(45, 51, 63);
   --foreground: #FFFAE3;
 
   --card: oklch(0.16 0.025 260);

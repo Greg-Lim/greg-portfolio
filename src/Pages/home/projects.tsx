@@ -1,7 +1,7 @@
 import { Experience } from "./experience";
 import type { ExperienceProps } from "./experience";
 
-import { myResume } from "@/resume/myresume";
+import { myResume } from "@/resume/myResume";
 
 export function Projects() {
   //filter empty titles
@@ -25,7 +25,7 @@ export function Projects() {
       .sort((a, b) => {
         // Present fist
         // If both have, sort by start date
-        // if both dont have, sort by end date then start date
+        // if both do not have, sort by end date then start date
         if (a.endDate === "Present") {
           a = { ...a, endDate: new Date().toISOString() };
         }
