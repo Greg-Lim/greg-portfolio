@@ -1,5 +1,4 @@
 import profile_1 from "@/assets/profile 1.jpg";
-import profile_2 from "@/assets/profile 2.jpg";
 import { GithubIcon } from "@/components/icons/github";
 import { LinkedinIcon } from "@/components/icons/linkedin";
 
