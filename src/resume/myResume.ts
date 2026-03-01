@@ -1,5 +1,4 @@
 import * as resumeType from "@/types/resume";
-import dummy_projects from "@/Pages/home/experience/dummy_project.png";
 import MCTSGif from "@/assets/MCTS.gif";
 
 import nixie_dark from "@/resume/media/nixie_dark.gif";

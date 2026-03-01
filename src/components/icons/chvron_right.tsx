@@ -1,5 +1,7 @@
-export const ExternalLinkIcon = ({
-  size = undefined,
+import React from "react";
+
+const ChevronRightIcon = ({
+  size = 24,
   color = "#000000",
   strokeWidth = 2,
   background = "transparent",
@@ -45,11 +47,11 @@ export const ExternalLinkIcon = ({
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        strokeWidth={strokeWidth}
-        d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+        stroke-width={strokeWidth}
+        d="m9 6l6 6l-6 6"
       />
     </svg>
   );
 };
 
-export default ExternalLinkIcon;
+export default ChevronRightIcon;

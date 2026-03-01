@@ -1,0 +1,75 @@
+/* Core Carousel Structure */
+.embla {
+  position: relative;
+  max-width: 48rem; /* Or whatever width fits your layout */
+  margin: auto;
+  --slide-spacing: 1rem;
+  z-index: 0;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+
+/* Navigation Buttons Styling */
+.embla__prev,
+.embla__next {
+/* Use Secondary color at 70% opacity for the background */
+  background-color: oklch(from var(--secondary) l c h / 0.3);
+  
+  /* Use Foreground for the icon color */
+  color: var(--foreground);
+
+  /* Glassmorphism effect */
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  
+  /* Border to define the shape on light/dark backgrounds */
+  border: 1px solid oklch(from var(--border) l c h / 0.1);
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.embla__prev:hover,
+.embla__next:hover {
+  /* Use your Accent color on hover */
+  background-color: oklch(from var(--secondary) l c h / 0.5);
+  color: var(--accent-foreground);
+}
+
+.embla__prev {
+  left: 10px;
+}
+
+.embla__next {
+  right: 10px;
+}
+
+/* Optional: Fade out buttons if disabled */
+.embla__prev:disabled,
+.embla__next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

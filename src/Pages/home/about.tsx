@@ -9,10 +9,10 @@ export function About() {
   };
 
   return (
-    <div className="flex flex-col gap-8 mx-auto">
+    <div className="flex flex-col gap-8 mx-auto w-full">
       <section>
         <h1 className="text-4xl font-bold mb-4">About Me</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl">
           I'm a CS undergrad from NTU who on distributed systems and advanced
           algorithms. From keeping TikTok's backend humming with Go to coding
           Nixie clocks and solving Hangman with Rust , I love building things
@@ -38,22 +38,11 @@ export function About() {
             </div>
           </div>
         ))}
-        {/* <h3 className="font-semibold mb-2">Frontend</h3>{" "}
-        <div className="flex flex-grid flex-wrap gap-1">
-          {skills_dict.Frontend.map((skill) => (
-            <div
-              key={skill}
-              className="flex-1 min-w-[calc(47%-1rem)] md:min-w-[calc(31%-1rem)] lg:min-w-[calc(22%-1rem)] text-gray-600 dark:text-gray-300 py-1 mr-6"
-            >
-              {skill}
-            </div>
-          ))}
-        </div> */}
       </section>
 
       <section>
         <h2 className="text-2xl font-bold mb-4">What I Love</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl">
           I'm drawn to projects that challenge me to think creatively and solve
           complex problems. I enjoy collaborating with others, learning new
           technologies, and staying updated with the latest trends in web
@@ -63,7 +52,7 @@ export function About() {
       </section>
 
       {myResume.education && myResume.education.length > 0 && (
-        <section>
+        <section className="w-full">
           <h2 className="text-2xl font-bold mb-6">Education</h2>
 
           {myResume.education

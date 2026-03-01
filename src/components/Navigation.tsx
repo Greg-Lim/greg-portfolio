@@ -10,7 +10,7 @@ interface NavigationProps {
 export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
   return (
     <div
-      className="shadow-md bg-secondary dark:bg-secondary w-full sticky top-0"
+      className="shadow-md bg-secondary dark:bg-secondary w-full sticky top-0 z-50"
       ref={navRef}
     >
       <div className="flex justify-between items-center max-w-300 mx-auto px-6 py-4">
@@ -18,31 +18,31 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
         <div className="text-xl font-bold">Greg Lim</div>
 
         {/* Desktop Navigation */}
-        <div className="hidden sm:flex gap-4">
+        <div className="hidden sm:flex space-x-6 md:space-x-8 xl:space-x-12">
           <a
             href="#Intro"
-            className="text-lg font-semibold hover:text-gray-300 transition px-4"
+            className="text-lg font-semibold hover:text-gray-300 transition"
           >
             Home
           </a>
 
           <a
             href="#About"
-            className="text-lg font-semibold hover:text-gray-300 transition px-4"
+            className="text-lg font-semibold hover:text-gray-300 transition"
           >
             About
           </a>
 
           <a
             href="#Work"
-            className="text-lg font-semibold hover:text-gray-300 transition px-4"
+            className="text-lg font-semibold hover:text-gray-300 transition"
           >
             Work
           </a>
 
           <a
             href="#Projects"
-            className="text-lg font-semibold hover:text-gray-300 transition px-4"
+            className="text-lg font-semibold hover:text-gray-300 transition"
           >
             Projects
           </a>
@@ -53,7 +53,14 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
           <Bars3Icon className="w-8 h-8" />
         </button>
 
-        <div>
+        <div className="flex justify-between items-center space-x-4 sm:space-x-8">
+          <button
+            className="text-lg font-semibold hover:text-gray-300 transition hover:cursor-pointer"
+            onClick={() => alert("Resume coming soon!")}
+            // onClick={() => window.open("/Greg_Lim_Resume.pdf", "_blank")}
+          >
+            Resume
+          </button>
           <ModeToggle />
         </div>
       </div>

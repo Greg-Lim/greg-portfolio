@@ -36,7 +36,7 @@ export function Intro() {
               Hi there
             </span>
           </span>
-          <p className="text-xl dark:text-gray-300">
+          <p className="text-xl dark:text-gray-300 max-w-200">
             Hi! I'm Greg. Welcome to my personal homepage (not PHP). This is my
             personal space to showcase my work, share my thoughts, and connect
             with others in the tech community.
@@ -46,7 +46,7 @@ export function Intro() {
               href="https://github.com/greg-lim"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-3xl hover:opacity-90 transition font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-full hover:opacity-90 transition font-semibold flex items-center gap-2"
             >
               <GithubIcon className="w-5 h-5" />
               <span>GitHub</span>
@@ -55,7 +55,7 @@ export function Intro() {
               href="https://www.linkedin.com/in/limgreg/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-3xl hover:opacity-90 transition font-semibold flex items-center gap-2"
+              className="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-full hover:opacity-90 transition font-semibold flex items-center gap-2"
             >
               <LinkedinIcon className="w-5 h-5" />
               <span>LinkedIn</span>

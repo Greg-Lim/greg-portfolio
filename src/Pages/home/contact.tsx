@@ -1,6 +1,8 @@
+import { myResume } from "@/resume/myResume";
+
 export function Contact() {
   return (
-    <div className="flex flex-col gap-8 max-w-[900px] mx-auto justify-items-start">
+    <div className="flex flex-col gap-8 mx-auto justify-items-start">
       <section>
         <h1 className="text-4xl font-bold mb-4">Get In Touch</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -18,7 +20,7 @@ export function Contact() {
                 href="mailto:limgreg33cc@gmail.com"
                 className="text-primary  hover:underline font-semibold"
               >
-                limgreg33cc@gmail.com
+                {myResume.basics.email}
               </a>
             </div>
           </div>
@@ -28,7 +30,7 @@ export function Contact() {
             <div>
               <h3 className="text-xl font-semibold mb-2">Phone</h3>
               <a className="text-primary hover:underline font-semibold">
-                +65 90853263
+                {myResume.basics.phone}
               </a>
             </div>
           </div>
@@ -37,7 +39,19 @@ export function Contact() {
           <div className="flex gap-4">
             <div>
               <h3 className="text-xl font-semibold mb-2">Location</h3>
-              <p className="text-gray-600 dark:text-gray-300">Singapore</p>
+              <p className="text-gray-600 dark:text-gray-300">
+                {myResume.basics.location?.city}
+              </p>
+            </div>
+          </div>
+
+          {/* Nationality */}
+          <div className="flex gap-4">
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Nationality</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                {myResume.basics.nationality}
+              </p>
             </div>
           </div>
         </div>

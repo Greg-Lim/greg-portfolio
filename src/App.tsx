@@ -11,7 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<BaseLayout />}>
             <Route path="/" element={<Home />} />
-            {/* <Route path='/projects' element={<Projects/>}/> */}
           </Route>
         </Routes>
       </Router>

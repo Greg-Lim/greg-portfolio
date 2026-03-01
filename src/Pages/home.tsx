@@ -39,17 +39,17 @@ export function Home() {
 
       {showArrow && <KeepScrolling />}
 
-      <div id="About" className="scroll-mt-32">
+      <div id="About" className="scroll-mt-32 w-full">
         <About />
       </div>
 
-      <div id="Work" className="scroll-mt-32">
+      <div id="Work" className="scroll-mt-32  w-full">
         <WorkExperience />
       </div>
-      <div id="Projects" className="scroll-mt-32">
+      <div id="Projects" className="scroll-mt-32 w-full">
         <Projects />
       </div>
-      <div id="Contact" className="scroll-mt-32">
+      <div id="Contact" className="scroll-mt-32 w-full">
         <Contact />
       </div>
     </div>

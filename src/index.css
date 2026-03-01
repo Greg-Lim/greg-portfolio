@@ -45,7 +45,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-
+/* 
 :root {
   --radius: 0.625rem;
   --background: oklch(35.816% 0.05243 82.984);
@@ -113,7 +113,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
-}
+} */
 
 :root {
   /* --radius: 0.75rem; Slightly softer corners look more modern */
