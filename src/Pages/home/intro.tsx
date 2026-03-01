@@ -1,8 +1,10 @@
-import pig from "@/assets/pig_2.png";
+import profile_1 from "@/assets/profile 1.jpg";
+import profile_2 from "@/assets/profile 2.jpg";
 import { GithubIcon } from "@/components/icons/github";
 import { LinkedinIcon } from "@/components/icons/linkedin";
 
 export function Intro() {
+  const profile = profile_1;
   return (
     <>
       <style>{`
@@ -20,26 +22,25 @@ export function Intro() {
             transform-origin: bottom right;
         }
       `}</style>
-      <div className="flex flex-col md:flex-row gap-6 lg:gap-12 self-center items-center justify-center min-h-[calc(100vh-4rem-4rem)]">
+      <div className="flex flex-col md:flex-row gap-4 lg:gap-12 self-center items-center justify-center min-h-[calc(100vh-4rem-4rem)]">
         <img
-          src={pig}
+          src={profile}
           alt="Profile"
-          className="w-full md:w-3/5 max-h-80 aspect-auto max-w-80 object-cover rounded-full self-center bg-none"
+          className="w-full md:w-2/3 max-h-70 aspect-square max-w-70 sm:max-h-80 sm:max-w-80 object-cover rounded-full self-center bg-none"
         />
 
         <div className="flex flex-col gap-4">
           <span className="leading-8">
-            <span className="text-6xl font-bold wave-hover wave-once inline-block xl:text-8xl">
+            <span className="text-4xl md:text-6xl font-bold wave-hover wave-once inline-block xl:text-8xl">
               👋
             </span>
-            <span className="text-6xl font-bold inline-block xl:text-8xl">
+            <span className="text-4xl md:text-6xl font-bold inline-block xl:text-8xl">
               Hi there
             </span>
           </span>
           <p className="text-xl dark:text-gray-300 max-w-200">
-            Hi! I'm Greg. Welcome to my personal homepage (not PHP). This is my
-            personal space to showcase my work, share my thoughts, and connect
-            with others in the tech community.
+            Hi! I'm Greg. Welcome to my personal homepage (not PHP). A space to
+            showcase my work, share my thoughts, and connect.
           </p>
           <div className="flex gap-3 pt-2">
             <a

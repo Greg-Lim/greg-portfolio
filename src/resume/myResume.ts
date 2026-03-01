@@ -1,5 +1,5 @@
 import * as resumeType from "@/types/resume";
-import MCTSGif from "@/assets/MCTS.gif";
+import MCTSGif from "@/resume/media/MCTS.gif";
 
 import nixie_dark from "@/resume/media/nixie_dark.gif";
 import nixie_bright from "@/resume/media/nixie_bright.gif";
