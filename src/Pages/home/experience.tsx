@@ -113,10 +113,6 @@ export function EmblaCarousel({ medias }: { medias: Media[] }) {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const onSelect = useCallback((emblaApi: any) => {
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
-  }, []);
   useEffect(() => {
     if (!emblaApi) return;
 
