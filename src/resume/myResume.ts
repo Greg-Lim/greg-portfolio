@@ -334,8 +334,35 @@ export const myResume: resumeType.Resume = {
   certifications: [
     {
       name: "AWS Certified Cloud Practitioner",
-      date: "2025-01-01",
+      date: "2026-01-28",
       issuer: "Amazon Web Services",
+      importance: {
+        priority: 10,
+        toInclude: "Optional",
+        includeIn: ["Backend", "AWS"],
+      },
+      tags: ["AWS", "Cloud Computing"],
+    },
+    {
+      name: "The Complete 2020 Web Development Bootcamp on Udemy",
+      date: "2021-01-21",
+      issuer: "Udemy",
+      importance: {
+        priority: 6,
+        toInclude: "Optional",
+        includeIn: ["Frontend"],
+      },
+      tags: ["JavaScript", "HTML", "CSS"],
+    },
+    {
+      name: "The Rust Programming Language Book",
+      date: "2025-01-01",
+      importance: {
+        priority: 7,
+        toInclude: "Optional",
+        includeIn: ["Backend", "Systems Programming"],
+      },
+      tags: ["Rust", "Systems Programming"],
     },
   ],
   awards: [

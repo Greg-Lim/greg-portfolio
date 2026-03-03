@@ -196,8 +196,10 @@ export interface Importance {
 
 type includeIn =
   | "Backend"
+  | "AWS"
   | "Frontend"
   | "Full Stack"
   | "Algo"
   | "Data Science and Machine Learning"
+  | "Systems Programming"
   | "Other";

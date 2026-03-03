@@ -26,7 +26,7 @@ export function Home() {
         setShowArrow(true);
         setHasShown(true);
       }
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [hasShown]);
