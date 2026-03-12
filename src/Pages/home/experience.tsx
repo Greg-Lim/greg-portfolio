@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./experience.css";
 import ChevronLeftIcon from "@/components/icons/chvron_left";
 import ChevronRightIcon from "@/components/icons/chvron_right";
+import { useFlyInAnimations } from "@/utils/useFlyInAnimations";
 
 export type ExperienceProps = {
   title: string;
@@ -23,11 +24,15 @@ export type ExperienceProps = {
 };
 
 export function Experience(exp: ExperienceProps) {
+  const { ref, isVisible, animations } = useFlyInAnimations();
   return (
-    <div className="border-l-4 border-blue-500 pl-3 sm:pl-6 pb-6">
+    <div
+      ref={ref}
+      className={`border-l-4 border-blue-500 pl-3 sm:pl-6 pb-6 ${animations.flyInDelay700}`}
+    >
       <div className="flex justify-between items-center mb-2">
         <div>
-          <span>
+          <span className={`${animations.flyInDelay500}`}>
             <h2 className="text-lg md:text-2xl font-bold flex items-center gap-2 flex-wrap">
               {exp.title}
               {exp.link && (

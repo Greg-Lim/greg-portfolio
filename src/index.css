@@ -154,7 +154,7 @@
 .dark {
   /* Deep Blue-Black instead of muddy grey */
   --background: rgb(45, 51, 63);
-  --foreground: #FFFAE3;
+  --foreground: #fbf9f3;
 
   --card: oklch(0.16 0.025 260);
   --card-foreground: oklch(0.98 0.005 260);

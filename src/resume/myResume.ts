@@ -303,6 +303,7 @@ export const myResume: resumeType.Resume = {
             "Programmed Arduino using MVC pattern to interface with RTC, display tubes, and user input",
         },
       ],
+      url: "https://cad.onshape.com/documents/d066fa25aff03ceb0119ec4c/w/095da257babb9729a095aa51/e/ea19e2183979e32bb777b475",
       tags: ["Arduino", "Embedded Programming", "Hardware"],
       media: [
         {
