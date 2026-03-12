@@ -2,8 +2,11 @@ import { sortByDate } from "@/resume/resumeHelpter";
 import { Experience } from "./experience";
 import type { ExperienceProps } from "./experience";
 import { myResume } from "@/resume/myResume";
+import { useFlyInAnimations } from "@/utils/useFlyInAnimations";
 
 export function WorkExperience() {
+  const { ref, animations } = useFlyInAnimations();
+
   //filter empty titles
   const experiences: ExperienceProps[] =
     myResume.work
@@ -27,7 +30,10 @@ export function WorkExperience() {
   const experiencesSorted = sortByDate(experiences);
 
   return (
-    <div className="flex flex-col gap-8 mx-auto">
+    <div
+      ref={ref}
+      className={`flex flex-col gap-8 mx-auto ${animations.appearNow}`}
+    >
       <section>
         <h1 className="text-4xl font-bold mb-8">Work Experience</h1>
         <div className="space-y-6">

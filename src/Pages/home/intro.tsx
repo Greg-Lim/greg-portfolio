@@ -22,7 +22,7 @@ export function Intro() {
         />
 
         <div className="flex flex-col">
-          <div className={`${animations.flyInDelay500} mb-8`}>
+          <div className="mb-8">
             <WavingHand
               animate={isVisible}
               className="text-4xl md:text-6xl font-bold inline-block xl:text-8xl"
@@ -32,7 +32,7 @@ export function Intro() {
             </span>
           </div>
 
-          <div className={`flex flex-col gap-4 ${animations.flyInDelay700}`}>
+          <div className="flex flex-col gap-4">
             <p className="text-xl dark:text-gray-300 max-w-200">
               Hi! I'm Greg, a Singapore-based Software Engineer. I specialize in
               building scalable backend systems and high-performance frontend
