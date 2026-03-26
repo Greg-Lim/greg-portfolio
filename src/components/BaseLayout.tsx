@@ -30,7 +30,7 @@ const BaseLayout = () => {
       {/* Footer */}
       <footer className=" border-t border-gray-700">
         <div className="max-w-6xl mx-auto px-6 py-6 text-center text-gray-400">
-          <p>© 2026 Greg Lim</p>
+          <p>© 2026 Greg Lim</p> <p className="opacity-0">Testing</p>
         </div>
       </footer>
     </div>
