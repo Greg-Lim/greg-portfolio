@@ -11,7 +11,7 @@ export const myResume: resumeType.Resume = {
     phone: "(+65) 90853263",
     url: "https://limgreg.com",
     summary:
-      "Highly motivated Computer Science undergraduate (GPA: 4.48/5.0) with experience building and maintaining high-scale backend systems and solving complex, novel problems. At TikTok, I designed and developed microservice endpoints using Go, Kitex/Hertz and various databases. Applied advanced algorithms (Simulated Annealing, MCTS) to real-world problems and contributed to enterprise frontend development using React at Autodesk. Comfortable across Go, C++, Rust, Python, Java and TypeScript.",
+      "Highly motivated Computer Science graduate (GPA: 4.48/5.0) with experience building and maintaining high-scale backend systems and solving complex, novel problems. At TikTok, I designed and developed microservice endpoints using Go, Kitex/Hertz, and multiple databases. I have applied advanced algorithms such as Simulated Annealing and MCTS to real-world optimisation problems, and contributed to enterprise frontend development using React at Autodesk.",
     nationality: "Singaporean",
     location: {
       city: "Singapore",
@@ -40,11 +40,11 @@ export const myResume: resumeType.Resume = {
       highlights: [
         {
           highlight:
-            "Led backend development for new 'News Anchor' vertical using Go and MongoDB with Kitex/Hertz",
+            "Led backend development for a new News Anchor vertical, including service migration, endpoint design, and data-fetching logic using Go, MongoDB, Kitex, and Hertz",
         },
         {
           highlight:
-            "Resolved ~10 on-call incidents and 20+ alarms per week to maintain system reliability",
+            "Resolved around 10 on-call incidents and 20+ alarms per week to support system reliability",
         },
         {
           highlight:
@@ -67,15 +67,15 @@ export const myResume: resumeType.Resume = {
       highlights: [
         {
           highlight:
-            "Developed an advanced search component for the Schema Portal using ReactQuery.",
+            "Built an advanced search component using React Query for data fetching and state management",
         },
         {
           highlight:
-            "Refactored production code to abstract and standardise paginated fetching.",
+            "Refactored paginated fetching into a reusable generic function for production calls",
         },
         {
           highlight:
-            "Utilized Jenkins for CI/CD pipelines and Jest for unit/integration testing",
+            "Used Jest for unit and integration testing, Jenkins for CI/CD, and Git workflows across a larger engineering team",
         },
       ],
       tags: ["React", "ReactQuery", "Jest", "Jenkins", "Frontend"],
@@ -90,15 +90,15 @@ export const myResume: resumeType.Resume = {
       startDate: "2023-05-01",
       endDate: "2023-07-01",
       summary:
-        "Implemented algorithms for network max coverage localisation and camera coverage optimization.",
+        "Implemented optimisation algorithms for network coverage localisation and camera placement on 2D maps.",
       highlights: [
         {
           highlight:
-            "Implemented Simulated Annealing and MCTS algorithms for network max coverage localisation",
+            "Implemented Simulated Annealing and MCTS with transposition tables for network max coverage localisation",
         },
         {
           highlight:
-            "Built camera coverage algorithm using all-pair shortest path and 2D raytracing",
+            "Built a camera coverage algorithm using all-pairs shortest path analysis and 2D raytracing",
         },
       ],
       tags: ["Python", "Algorithms", "Simulated Annealing", "MCTS"],
@@ -144,10 +144,11 @@ export const myResume: resumeType.Resume = {
       studyType: "Bachelor of Computing",
       startDate: "2021-08-01",
       endDate: "2025-05-01",
-      score: "4.48/5.00",
+      score: "4.48/5.00, Honours (Distinction)",
       courses: [
         "Data Structures and Algorithms",
         "Algorithms Design and Analysis",
+        "Software Engineering",
         "Advance Topics in Algorithms",
         "Distributed Systems",
         "Database Systems Principles",
@@ -195,19 +196,29 @@ export const myResume: resumeType.Resume = {
   ],
   projects: [
     {
-      name: "Cross Platform Command Palette Tool",
+      name: "Global Palette Command Launcher",
       startDate: "2025-12-01",
-      endDate: "2026-02-01",
+      endDate: "Present",
       description:
-        "Architecting a command palette tool to quickly find and run shortcuts across different applications to speed up work ergonomics.",
+        "Building a Rust command palette that opens from a global hotkey and runs application shortcuts through fuzzy search and TOML-defined extensions.",
       highlights: [
         {
           highlight:
-            "Building using Rust to learn the language and implement complex practical projects",
+            "Designed a keyboard-first launcher to speed up workflows and make application shortcuts easier to discover",
+        },
+        {
+          highlight:
+            "Used the project to deepen practical Rust experience while working with desktop automation concerns",
         },
       ],
       url: "https://github.com/Greg-Lim/global_palette",
-      tags: ["Rust"],
+      tags: ["Rust", "egui", "Win32 API"],
+      media: [
+        {
+          type: "link",
+          url: "https://raw.githubusercontent.com/Greg-Lim/global_palette/master/README/Command_pallete.gif",
+        },
+      ],
       importance: {
         priority: 6,
         toInclude: "Optional",
@@ -218,11 +229,15 @@ export const myResume: resumeType.Resume = {
       startDate: "2023-01-01",
       endDate: "2023-03-01",
       description:
-        "Built a discrete-event simulation to investigate QoS changes when adding a reserve channel to a highway cell tower.",
+        "Built a discrete-event simulation to evaluate QoS trade-offs when adding a reserve channel to a highway cell tower.",
       highlights: [
         {
           highlight:
-            "Concluded 40% decrease in call interruption with 279% increase in blocked calls (±0.0001, 95% CI)",
+            "Applied distribution selection, goodness-of-fit testing, sample sizing, convergence analysis, and result analysis",
+        },
+        {
+          highlight:
+            "Concluded a 40% decrease in call interruption with a 279% increase in blocked calls (+/- 0.0001, 95% CI)",
         },
       ],
       url: "https://github.com/Greg-Lim/SC4054_Assignment",
@@ -239,11 +254,11 @@ export const myResume: resumeType.Resume = {
       startDate: "2023-08-01",
       endDate: "2023-11-01",
       description:
-        "Designed and built a DBMS supporting bulk writes and range queries using B+ Tree in C++.",
+        "Designed and built a C++ DBMS supporting one-time bulk writes and range queries using a B+ Tree.",
       highlights: [
         {
           highlight:
-            "Achieved 4x fewer data block reads from disk through byte-level tuning",
+            "Achieved 4x fewer data block reads from disk through byte-level memory and storage tuning",
         },
       ],
       url: "https://github.com/weiyuan12/Database-System-Principles-Project-1",
@@ -254,9 +269,12 @@ export const myResume: resumeType.Resume = {
       startDate: "2023-01-01",
       endDate: "2023-03-01",
       description:
-        "Implemented client/server UDP communication with network fault tolerance.",
+        "Designed and implemented Java client/server communication over UDP on a simulated unreliable network.",
       highlights: [
-        { highlight: "Achieved at-most-once invocation with reply caching" },
+        {
+          highlight:
+            "Achieved at-most-once invocation with reply caching to prevent duplicate execution",
+        },
       ],
       url: "https://github.com/Greg-Lim/Distributed-Flight-Information-System",
       tags: ["Java", "Distributed Systems", "Network"],
@@ -281,13 +299,13 @@ export const myResume: resumeType.Resume = {
       startDate: "2022-08-01",
       endDate: "2022-12-01",
       description:
-        "Developed a React web application to provide carpark recommendations using LTA and Google Maps APIs.",
+        "Developed a React web app that recommends carparks using user location, LTA lot counts, and Google Maps distance data.",
       highlights: [
         {
           highlight:
-            "Executed full software development lifecycle using Agile methodology",
+            "Executed the software development lifecycle from requirements to testing using Agile methodology",
         },
-        { highlight: "Integrated with LTA and Google Maps APIs" },
+        { highlight: "Built the backend with Node.js and MongoDB" },
       ],
       tags: ["React", "Node.js", "MongoDB", "API Integration"],
     },
@@ -296,11 +314,11 @@ export const myResume: resumeType.Resume = {
       startDate: "2020-01-01",
       endDate: "2023-01-01",
       description:
-        "Designed, constructed, and programmed a Nixie Clock from scratch with Arduino microcontroller.",
+        "Designed, constructed, and programmed a Nixie Clock from scratch with an Arduino microcontroller.",
       highlights: [
         {
           highlight:
-            "Programmed Arduino using MVC pattern to interface with RTC, display tubes, and user input",
+            "Interfaced with RTC, display tubes, and user input in real time using an MVC-style structure",
         },
       ],
       url: "https://cad.onshape.com/documents/d066fa25aff03ceb0119ec4c/w/095da257babb9729a095aa51/e/ea19e2183979e32bb777b475",
@@ -325,6 +343,10 @@ export const myResume: resumeType.Resume = {
       endDate: "2023-12-01",
       summary: "Tutored weaker peers in Data Structures and Algorithms.",
       highlights: [
+        {
+          highlight:
+            "Tutored topics including pointers, linked lists, and graph traversal using C",
+        },
         {
           highlight:
             "Taught complex topics by identifying knowledge gaps and breaking down concepts",
@@ -372,7 +394,13 @@ export const myResume: resumeType.Resume = {
       date: "2024-07-01",
       awarder: "TikTok",
       summary:
-        "Built a decentralized cryptocurrency (Tok Coin) using Ethereum blockchain for TikTok Shop",
+        "Built a decentralized cryptocurrency, Tok Coin, using Ethereum blockchain for TikTok Shop and mainly contributed to the frontend",
+    },
+    {
+      title: "Module Prize - Computer Programming",
+      date: "2017-01-01",
+      awarder: "Ngee Ann Polytechnic",
+      summary: "Awarded for performance in Computer Programming",
     },
     {
       title: "First Runner-up - Connect Job CodeChallenge 2023",

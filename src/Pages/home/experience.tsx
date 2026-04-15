@@ -5,11 +5,15 @@ import useEmblaCarousel from "embla-carousel-react";
 import { GithubIcon } from "@/components/icons/github";
 import ExternalLinkIcon from "@/components/icons/external-link";
 import { formatDate } from "@/resume/resumeHelpter";
+import type { CSSProperties } from "react";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import "./experience.css";
 import ChevronLeftIcon from "@/components/icons/chvron_left";
 import ChevronRightIcon from "@/components/icons/chvron_right";
 import { useFlyInAnimations } from "@/utils/useFlyInAnimations";
+
+const previewFrameRegistry = new Map<string, HTMLIFrameElement>();
 
 export type ExperienceProps = {
   title: string;
@@ -117,6 +121,8 @@ export function EmblaCarousel({ medias }: { medias: Media[] }) {
   // State to track if we can scroll
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -125,6 +131,7 @@ export function EmblaCarousel({ medias }: { medias: Media[] }) {
     const updateButtons = () => {
       setCanScrollPrev(emblaApi.canScrollPrev());
       setCanScrollNext(emblaApi.canScrollNext());
+      setSelectedIndex(emblaApi.selectedScrollSnap());
     };
 
     updateButtons(); // Run immediately when API is ready
@@ -148,15 +155,31 @@ export function EmblaCarousel({ medias }: { medias: Media[] }) {
     [emblaApi],
   );
 
+  const updateExpandedIndex = useCallback(
+    (index: number) => {
+      setSelectedIndex(index);
+      emblaApi?.scrollTo(index);
+    },
+    [emblaApi],
+  );
+
+  const closeExpandedMedia = useCallback(() => {
+    setExpandedIndex(null);
+  }, []);
+
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {medias.map((media, idx) => (
             <div key={idx} className="embla__slide max-w-auto max-h-80">
-              {media.type === "link" && mediaLink(media)}
-              {media.type === "file" && mediaFile(media)}
-              {media.type === "preview" && mediaPreview(media)}
+              <MediaOpenButton
+                media={media}
+                onOpen={() => {
+                  setSelectedIndex(idx);
+                  setExpandedIndex(idx);
+                }}
+              />
             </div>
           ))}
         </div>
@@ -180,36 +203,322 @@ export function EmblaCarousel({ medias }: { medias: Media[] }) {
           <ChevronRightIcon size={20} />
         </button>
       )}
+
+      {expandedIndex !== null && (
+        <MediaModal
+          medias={medias}
+          initialIndex={expandedIndex}
+          selectedIndex={selectedIndex}
+          onIndexChange={updateExpandedIndex}
+          onClose={closeExpandedMedia}
+        />
+      )}
     </div>
   );
 }
 
-export function mediaLink(media: MediaLink) {
+function mediaLink(media: MediaLink) {
+  return <MediaContent media={media} />;
+}
+
+function mediaFile(media: MediaFile) {
+  return <MediaContent media={media} />;
+}
+
+function mediaPreview(media: MediaPreview) {
+  return <MediaContent media={media} />;
+}
+
+function MediaOpenButton({
+  media,
+  onOpen,
+}: {
+  media: Media;
+  onOpen: () => void;
+}) {
+  if (media.type === "preview") {
+    return (
+      <div className="relative h-full w-full">
+        <PersistentPreviewFrame media={media} />
+        <button
+          type="button"
+          onClick={onOpen}
+          className="absolute inset-0 cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+          aria-label="Open media preview in a larger view"
+        >
+          <span className="sr-only">Open media preview in a larger view</span>
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="h-full w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+      aria-label="Open media in a larger view"
+    >
+      <MediaContent media={media} />
+    </button>
+  );
+}
+
+function MediaModal({
+  medias,
+  initialIndex,
+  selectedIndex,
+  onIndexChange,
+  onClose,
+}: {
+  medias: Media[];
+  initialIndex: number;
+  selectedIndex: number;
+  onIndexChange: (index: number) => void;
+  onClose: () => void;
+}) {
+  const [modalRef, modalApi] = useEmblaCarousel({
+    loop: medias.length > 1,
+    startIndex: initialIndex,
+  });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [modalSelectedIndex, setModalSelectedIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    if (!modalApi) return;
+
+    const updateModalCarousel = () => {
+      setCanScrollPrev(modalApi.canScrollPrev());
+      setCanScrollNext(modalApi.canScrollNext());
+      const nextIndex = modalApi.selectedScrollSnap();
+      setModalSelectedIndex(nextIndex);
+      onIndexChange(nextIndex);
+    };
+
+    modalApi.scrollTo(initialIndex, true);
+    updateModalCarousel();
+    modalApi.on("select", updateModalCarousel);
+    modalApi.on("reInit", updateModalCarousel);
+
+    return () => {
+      modalApi.off("select", updateModalCarousel);
+      modalApi.off("reInit", updateModalCarousel);
+    };
+  }, [initialIndex, modalApi, onIndexChange]);
+
+  useEffect(() => {
+    if (!modalApi || selectedIndex === modalApi.selectedScrollSnap()) return;
+    modalApi.scrollTo(selectedIndex);
+  }, [modalApi, selectedIndex]);
+
+  const scrollPrev = useCallback(
+    () => modalApi && modalApi.scrollPrev(),
+    [modalApi],
+  );
+  const scrollNext = useCallback(
+    () => modalApi && modalApi.scrollNext(),
+    [modalApi],
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      } else if (event.key === "ArrowLeft") {
+        modalApi?.scrollPrev();
+      } else if (event.key === "ArrowRight") {
+        modalApi?.scrollNext();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalApi, onClose]);
+
+  return createPortal(
+    <div
+      className="fixed inset-0 flex items-center justify-center overflow-hidden bg-black/85 p-4 [z-index:9999]"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded media view"
+      onClick={onClose}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed right-4 top-4 rounded-md bg-background/90 px-3 py-2 text-sm font-semibold text-foreground shadow hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 [z-index:10000]"
+        aria-label="Close expanded media view"
+      >
+        Close
+      </button>
+      <div className="w-full overflow-hidden" ref={modalRef}>
+        <div className="flex">
+          {medias.map((media, idx) => (
+            <div
+              key={idx}
+              className="flex min-w-0 flex-[0_0_100%] items-center justify-center"
+            >
+              <ModalMediaContent media={media} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {medias.length > 1 && canScrollPrev && (
+        <button
+          type="button"
+          className="fixed left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 sm:left-8 sm:h-12 sm:w-12 [z-index:10000]"
+          onClick={(event) => {
+            event.stopPropagation();
+            scrollPrev();
+          }}
+          aria-label="View previous media"
+        >
+          <ChevronLeftIcon size={24} />
+        </button>
+      )}
+
+      {medias.length > 1 && canScrollNext && (
+        <button
+          type="button"
+          className="fixed right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 text-foreground shadow hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 sm:right-8 sm:h-12 sm:w-12 [z-index:10000]"
+          onClick={(event) => {
+            event.stopPropagation();
+            scrollNext();
+          }}
+          aria-label="View next media"
+        >
+          <ChevronRightIcon size={24} />
+        </button>
+      )}
+
+      {medias.length > 1 && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-background/80 px-3 py-1 text-sm font-medium text-foreground [z-index:10000]">
+          {modalSelectedIndex + 1} / {medias.length}
+        </div>
+      )}
+    </div>,
+    document.body,
+  );
+}
+
+function ModalMediaContent({ media }: { media: Media }) {
+  if (media.type === "link") {
+    return <ExpandedImage src={media.url} alt="Media Link" />;
+  }
+
+  if (media.type === "file") {
+    return <ExpandedImage src={media.path} alt="Media File" />;
+  }
+
+  return (
+    <PersistentPreviewFrame media={media} expanded />
+  );
+}
+
+function PersistentPreviewFrame({
+  media,
+  expanded = false,
+}: {
+  media: MediaPreview;
+  expanded?: boolean;
+}) {
+  const frameHostRef = useCallback(
+    (host: HTMLDivElement | null) => {
+      if (!host) return;
+
+      const previousParent = previewFrameRegistry.get(media.url)?.parentElement;
+      const frame = getPreviewFrame(media);
+      frame.className = expanded
+        ? "h-[88dvh] max-h-[88dvh] w-[92dvw] max-w-6xl rounded-md bg-background"
+        : "h-64 w-full object-contain";
+      frame.onclick = (event) => event.stopPropagation();
+      host.appendChild(frame);
+
+      return () => {
+        if (previousParent && previousParent.isConnected) {
+          frame.className = "h-64 w-full object-contain";
+          previousParent.appendChild(frame);
+        }
+      };
+    },
+    [expanded, media],
+  );
+
+  return <div ref={frameHostRef} className="h-full w-full" />;
+}
+
+function getPreviewFrame(media: MediaPreview) {
+  const existingFrame = previewFrameRegistry.get(media.url);
+  if (existingFrame) return existingFrame;
+
+  const frame = document.createElement("iframe");
+  frame.src = media.url;
+  frame.title = "Media Preview";
+  previewFrameRegistry.set(media.url, frame);
+  return frame;
+}
+
+function ExpandedImage({ src, alt }: { src: string; alt: string }) {
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+  const expandedImageStyle: CSSProperties | undefined = aspectRatio
+    ? {
+        width: `min(92dvw, calc(88dvh * ${aspectRatio}))`,
+        height: "auto",
+        maxHeight: "88dvh",
+        maxWidth: "92dvw",
+      }
+    : undefined;
+
   return (
     <img
-      src={media.url}
-      alt="Media Link"
-      className="w-full h-full object-contain"
+      src={src}
+      alt={alt}
+      className="max-h-[88dvh] max-w-[92dvw] object-contain"
+      style={expandedImageStyle}
+      onClick={(event) => event.stopPropagation()}
+      onLoad={(event) => {
+        const image = event.currentTarget;
+        setAspectRatio(image.naturalWidth / image.naturalHeight);
+      }}
     />
   );
 }
 
-export function mediaFile(media: MediaFile) {
-  return (
-    <img
-      src={media.path}
-      alt="Media File"
-      className="w-full h-full object-contain"
-    />
-  );
-}
+function MediaContent({
+  media,
+  expanded = false,
+}: {
+  media: Media;
+  expanded?: boolean;
+}) {
+  if (media.type === "link") {
+    return (
+      <img
+        src={media.url}
+        alt="Media Link"
+        className={expanded ? "max-h-[88dvh] max-w-[92dvw] object-contain" : "h-full w-full object-contain"}
+      />
+    );
+  }
 
-export function mediaPreview(media: MediaPreview) {
+  if (media.type === "file") {
+    return (
+      <img
+        src={media.path}
+        alt="Media File"
+        className={expanded ? "max-h-[88dvh] max-w-[92dvw] object-contain" : "h-full w-full object-contain"}
+      />
+    );
+  }
+
   return (
-    <iframe
-      src={media.url}
-      title="Media Preview"
-      className="w-full h-64 object-contain"
-    />
+    <PersistentPreviewFrame media={media} expanded={expanded} />
   );
 }

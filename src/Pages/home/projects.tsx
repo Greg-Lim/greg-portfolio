@@ -17,6 +17,7 @@ export function Projects() {
           startDate: project.startDate,
           endDate: project.endDate,
           description: project.description,
+          bullets: project.highlights?.map((highlight) => highlight.highlight),
           skills: project.tags,
           link: project.url,
           media: project.media,

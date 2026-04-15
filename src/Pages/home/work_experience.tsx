@@ -21,6 +21,7 @@ export function WorkExperience() {
           startDate: work.startDate,
           endDate: work.endDate,
           description: work.summary,
+          bullets: work.highlights?.map((highlight) => highlight.highlight),
           skills: work.tags,
           link: work.url,
           media: work.media,

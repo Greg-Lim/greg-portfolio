@@ -26,12 +26,11 @@ export function About() {
       <section>
         <h1 className="text-4xl font-bold mb-4">About Me</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl">
-          I'm a CS undergrad from NTU who on distributed systems and advanced
-          algorithms. From keeping TikTok's backend humming with Go to coding
-          Nixie clocks and solving Hangman with Rust , I love building things
-          that are as efficient as they are complex. Whether I'm optimizing a
-          DBMS or competing in hackathons, I'm always looking for a new problem
-          to solve.
+          I'm a Computer Science graduate from NTU with experience across
+          backend services, frontend development, distributed systems, and
+          algorithm-heavy projects. From building Trust & Safety services at
+          TikTok to coding Nixie clocks and Rust tools, I enjoy turning complex
+          requirements into solutions
         </p>
       </section>
       <section className="hidden">

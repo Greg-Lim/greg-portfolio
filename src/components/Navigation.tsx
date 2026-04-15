@@ -21,28 +21,28 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
         <div className="hidden sm:flex space-x-6 md:space-x-8 xl:space-x-12">
           <a
             href="#Intro"
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Home
           </a>
 
           <a
             href="#About"
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             About
           </a>
 
           <a
             href="#Work"
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Work
           </a>
 
           <a
             href="#Projects"
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Projects
           </a>
@@ -55,7 +55,7 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
 
         <div className="flex justify-between items-center space-x-4 sm:space-x-8">
           <button
-            className="text-lg font-semibold hover:text-gray-300 transition hover:cursor-pointer"
+            className="text-lg font-semibold hover:text-gray-300 hover:cursor-pointer"
             onClick={() => alert("Resume coming soon!")}
             // onClick={() => window.open("/Greg_Lim_Resume.pdf", "_blank")}
           >
@@ -71,28 +71,28 @@ export const Navigation = ({ isOpen, setIsOpen, navRef }: NavigationProps) => {
           <a
             href="#Intro"
             onClick={() => setIsOpen(false)}
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Home
           </a>
           <a
             href="#About"
             onClick={() => setIsOpen(false)}
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             About
           </a>
           <a
             href="#Work"
             onClick={() => setIsOpen(false)}
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Work
           </a>
           <a
             href="#Projects"
             onClick={() => setIsOpen(false)}
-            className="text-lg font-semibold hover:text-gray-300 transition"
+            className="text-lg font-semibold hover:text-gray-300"
           >
             Projects
           </a>
